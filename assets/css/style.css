@@ -1,0 +1,87 @@
+:root {
+    --logo-text-color: #000;
+    --text-color: #000;
+    --background-color: #fff;
+    --accent-color: red;
+    --button-text-color: red;
+    --transition-delay: 1s;
+    --timestamp-color: #cacaca;
+}
+
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark {
+    --logo-text-color: #fff;
+    --text-color: #fff;
+    --background-color: #000;
+    --accent-color: red;
+    --button-text-color: #fff;
+    --transition-delay: 1s; 
+}
+
+p {
+    font-family: helvetica;
+    font-size: .8rem;
+    line-height: 1rem;
+    color: var(--text-color);
+}
+
+.page-window-bg {
+    /* background-color: #D10000;
+    background-color: #e60000; */
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: block;
+    padding: 0 1rem;
+}
+
+.center-container {
+    max-width: 400px;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.brand-container {
+    margin-bottom: 3rem;
+}
+
+.brand-name {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 4rem;
+    text-align: center;
+}
+
+.brand-slogan {
+    display: block;
+    text-align: center;
+}
+
+.info-text {
+    text-align: center;
+    border: .1rem dashed #eee;
+    padding: .5rem 1rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: .5rem;
+}
