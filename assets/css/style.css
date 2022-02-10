@@ -6,6 +6,7 @@
     --button-text-color: red;
     --transition-delay: 1s;
     --timestamp-color: #cacaca;
+    --form-input-color: #000;
 }
 
 html,
@@ -20,10 +21,12 @@ body {
 body.dark {
     --logo-text-color: #fff;
     --text-color: #fff;
-    --background-color: #000;
+    --background-color: #151515;
     --accent-color: red;
     --button-text-color: #fff;
     --transition-delay: 1s; 
+    --timestamp-color: #333;
+    --form-input-color: #282828;
 }
 
 p {
@@ -84,4 +87,10 @@ form {
     display: grid;
     grid-template-columns: 1fr auto;
     grid-gap: .5rem;
+}
+
+form input {
+    padding: .7rem 1rem;
+    font-size: .8rem;
+    border: 1px solid var(--form-input-color);
 }
