@@ -6,7 +6,14 @@
     --button-text-color: red;
     --transition-delay: 1s;
     --timestamp-color: #cacaca;
-    --form-input-color: #000;
+    --form-accent-color: #eee;
+    --body-font: helvetica;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html,
@@ -18,7 +25,7 @@ body {
     color: var(--text-color);
 }
 
-body.dark {
+[theme="dark"] {
     --logo-text-color: #fff;
     --text-color: #fff;
     --background-color: #151515;
@@ -26,7 +33,7 @@ body.dark {
     --button-text-color: #fff;
     --transition-delay: 1s; 
     --timestamp-color: #333;
-    --form-input-color: #282828;
+    --form-accent-color: #fff;
 }
 
 p {
@@ -92,5 +99,23 @@ form {
 form input {
     padding: .7rem 1rem;
     font-size: .8rem;
-    border: 1px solid var(--form-input-color);
+    border: 1px solid var(--form-accent-color);
+    background-color: transparent;
+    outline: none;
+    color: var(--text-color);
+}
+
+form button {
+    text-transform: uppercase;
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    padding: 0 1rem;
+    border: 1px solid var(--form-accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+form button:hover {
+    border: 1px solid var(--text-color);
 }
