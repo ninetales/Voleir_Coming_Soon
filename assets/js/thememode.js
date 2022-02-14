@@ -135,7 +135,7 @@ class ThemeMode extends HTMLElement {
         if(themeMode != null){
             console.log('Custom Option chosed');
             selectList.value = 'custom';
-            //applyTheme(toggleSwitch);
+            applyTheme(toggleSwitch);
         } else {
             console.log('first time. check system theme');
             autoTheme();
@@ -148,25 +148,54 @@ class ThemeMode extends HTMLElement {
                 autoTheme();
             } else {
                 setThemeMode(this.value);
-                applyTheme();
+                applyTheme(toggleSwitch);
             }
         })
 
+        //
         function applyTheme(toggleSwitch){
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // Check if already dark theme
-                console.log('already dark');
-                document.body.setAttribute('theme', 'dark');
-                localStorage.setItem('themeStyle', 'dark');
-                toggleSwitch.style.display = "block";
-                toggleSwitch.querySelectorAll('input')[0].checked = true;
+
+            if (localStorage.getItem('themeStyle') === null) {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    setDarkTheme(toggleSwitch)
+                } else {
+                    setLightTheme(toggleSwitch)
+                } 
+            } 
+            else if (localStorage.getItem('themeStyle') === 'dark'){
+                setDarkTheme(toggleSwitch)
             } else {
-                // it is light
-                console.log('it is shiny');
-                toggleSwitch.style.display = "block";
-                toggleSwitch.querySelectorAll('input')[0].checked = false;
+                setLightTheme(toggleSwitch)
             }
         }
+
+
+            toggleSwitch.querySelectorAll('input')[0].addEventListener('change', function(){
+                if(this.checked){
+                    setDarkTheme(toggleSwitch);
+                } else {
+                    setLightTheme(toggleSwitch);
+                }
+            })
+
+        // Set dark theme
+        function setDarkTheme(toggleSwitch){
+            console.log('Set dark theme');
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('themeStyle', 'dark');
+            toggleSwitch.style.display = "block";
+            toggleSwitch.querySelectorAll('input')[0].checked = true;
+        }
+
+        // Set light theme
+        function setLightTheme(toggleSwitch){
+            console.log('Set light theme');
+            document.body.removeAttribute('data-theme');
+            localStorage.setItem('themeStyle', 'light');
+            toggleSwitch.style.display = "block";
+            toggleSwitch.querySelectorAll('input')[0].checked = false;
+        }
+
 
         // Set theme mode
         function setThemeMode(mode){
@@ -184,7 +213,7 @@ class ThemeMode extends HTMLElement {
         // Set theme based on users system preferenses
         function autoTheme(){
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.setAttribute('theme', 'dark');
+                document.body.setAttribute('data-theme', 'dark');
             } 
             clearDatabase();
         }
