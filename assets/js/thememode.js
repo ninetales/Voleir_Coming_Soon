@@ -5,10 +5,9 @@ templateThemeMode.innerHTML = `
 :host fieldset {
     display: grid;
     grid-template-columns: repeat(2,auto);
-    border: 1px solid var(--form-accent-color);
-    border-radius: 1rem;
+    border: 1px dashed var(--form-accent-color);
     position: absolute;
-    top: 1rem;
+    bottom: 1rem;
     right: 1rem;
     font-family: var(--body-font);
     font-size: .8rem;
@@ -30,7 +29,8 @@ select {
     margin: 0;
     width: 100%;
     font-family: var(--body-font);
-    font-size: .8rem;
+    font-size: .6rem;
+    text-transform: uppercase;
     cursor: inherit;
     height: 2rem;
     line-height: inherit;
@@ -39,15 +39,39 @@ select {
     color: var(--text-color);
 }
 
-#toggle {
+select option {
+    color: #fff;
+    background-color: #535353;
+}
+
+#switch-con {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: .5rem;
     display: none;
 }
+
+.moon-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moon-icon svg {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+
+.moon-icon svg path{
+    fill: var(--text-color);
+}
+
 
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 40px;
   }
   
   .switch input { 
@@ -57,9 +81,11 @@ select {
   }
   
   .slider {
+    height: 1.2rem;
+    width: 2.5rem;
     position: absolute;
     cursor: pointer;
-    top: 0;
+    top: 5px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -71,10 +97,10 @@ select {
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 17px;
+    width: 17px;
+    left: 1px;
+    bottom: 1px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -89,9 +115,9 @@ select {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(21px);
+    -ms-transform: translateX(21px);
+    transform: translateX(21px);
   }
   
   /* Rounded sliders */
@@ -111,10 +137,18 @@ select {
         <option value="auto">Auto</option>   
         <option value="custom">Custom</option>         
     </select>
+    
+    <div id="switch-con">
     <label class="switch" id="toggle">
         <input type="checkbox">
         <span class="slider round"></span>
     </label>
+
+    <div class="moon-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"><rect fill="none" height="24" width="24"/><path d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg>
+    </div>
+
+    </div>
 </fieldset>
 
 `;
@@ -128,7 +162,7 @@ class ThemeMode extends HTMLElement {
 
     connectedCallback() {
         
-        const toggleSwitch = this.shadowRoot.querySelector('#toggle');
+        const toggleSwitch = this.shadowRoot.querySelector('#switch-con');
         const themeMode = localStorage.getItem('themeMode');
         let selectList = this.shadowRoot.querySelector('select');
 
@@ -138,14 +172,14 @@ class ThemeMode extends HTMLElement {
             applyTheme(toggleSwitch);
         } else {
             console.log('first time. check system theme');
-            autoTheme();
+            autoTheme(toggleSwitch);
         }
 
 
         // Select menu
         this.shadowRoot.querySelector('select').addEventListener('change', function(event){
             if(this.value == 'auto'){
-                autoTheme();
+                autoTheme(toggleSwitch);
             } else {
                 setThemeMode(this.value);
                 applyTheme(toggleSwitch);
@@ -170,20 +204,21 @@ class ThemeMode extends HTMLElement {
         }
 
 
-            toggleSwitch.querySelectorAll('input')[0].addEventListener('change', function(){
-                if(this.checked){
-                    setDarkTheme(toggleSwitch);
-                } else {
-                    setLightTheme(toggleSwitch);
-                }
-            })
+        // Dark and Light theme switch
+        toggleSwitch.querySelectorAll('input')[0].addEventListener('change', function(){
+            if(this.checked){
+                setDarkTheme(toggleSwitch);
+            } else {
+                setLightTheme(toggleSwitch);
+            }
+        })
 
         // Set dark theme
         function setDarkTheme(toggleSwitch){
             console.log('Set dark theme');
             document.body.setAttribute('data-theme', 'dark');
             localStorage.setItem('themeStyle', 'dark');
-            toggleSwitch.style.display = "block";
+            toggleSwitch.style.display = "grid";
             toggleSwitch.querySelectorAll('input')[0].checked = true;
         }
 
@@ -192,7 +227,7 @@ class ThemeMode extends HTMLElement {
             console.log('Set light theme');
             document.body.removeAttribute('data-theme');
             localStorage.setItem('themeStyle', 'light');
-            toggleSwitch.style.display = "block";
+            toggleSwitch.style.display = "grid";
             toggleSwitch.querySelectorAll('input')[0].checked = false;
         }
 
@@ -211,10 +246,11 @@ class ThemeMode extends HTMLElement {
         }
 
         // Set theme based on users system preferenses
-        function autoTheme(){
+        function autoTheme(toggleSwitch){
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 document.body.setAttribute('data-theme', 'dark');
             } 
+            toggleSwitch.style.display = "none";
             clearDatabase();
         }
 
