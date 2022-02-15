@@ -12,6 +12,15 @@ templateThemeMode.innerHTML = `
     font-family: var(--body-font);
     font-size: .8rem;
     padding: 0 1rem;
+    border-radius: .3rem;
+}
+
+:host fieldset legend {
+    font-family: var(--body-font);
+    font-size: .6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    margin: 0;
 }
 
 :host select,
