@@ -87,7 +87,8 @@ p {
 .info-text,
 .instagram-text {
     text-align: center;
-    border: .1rem solid #eee;
+    /* border: .1rem solid #eee; */
+    box-shadow: rgba(45, 41, 38, 0.1) 0px 1px 4px;
     padding: .5rem 1rem;
 
     -webkit-box-sizing: border-box;
