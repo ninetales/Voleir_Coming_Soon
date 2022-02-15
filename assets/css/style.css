@@ -2,11 +2,10 @@
     --logo-text-color: #000;
     --text-color: #000;
     --background-color: #fff;
-    --accent-color: red;
-    --button-text-color: red;
     --transition-delay: 1s;
     --timestamp-color: #cacaca;
     --form-accent-color: #eee;
+    --info-box-color: #fbfbfb;
     --body-font: helvetica;
 }
 
@@ -29,7 +28,6 @@ body {
     --logo-text-color: #fff;
     --text-color: #fff;
     --background-color: #151515;
-    --accent-color: red;
     --button-text-color: #fff;
     --transition-delay: 1s; 
     --timestamp-color: #333;
@@ -87,7 +85,7 @@ p {
 .info-text,
 .instagram-text {
     text-align: center;
-    /* border: .1rem solid #eee; */
+    border: .1rem solid var(--info-box-color);
     box-shadow: rgba(45, 41, 38, 0.1) 0px 1px 4px;
     padding: .5rem 1rem;
     border-radius: .3rem;
