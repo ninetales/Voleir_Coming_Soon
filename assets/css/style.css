@@ -89,6 +89,10 @@ p {
     text-align: center;
     border: .1rem dashed #eee;
     padding: .5rem 1rem;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .instagram-text {

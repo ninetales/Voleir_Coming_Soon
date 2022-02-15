@@ -5,6 +5,7 @@ templateThemeMode.innerHTML = `
 :host fieldset {
     display: grid;
     grid-template-columns: repeat(2,auto);
+    grid-gap: .2rem;
     border: 1px dashed var(--form-accent-color);
     position: absolute;
     bottom: 1rem;
