@@ -90,6 +90,7 @@ p {
     /* border: .1rem solid #eee; */
     box-shadow: rgba(45, 41, 38, 0.1) 0px 1px 4px;
     padding: .5rem 1rem;
+    border-radius: .3rem;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
