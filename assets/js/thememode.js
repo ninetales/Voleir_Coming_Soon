@@ -9,7 +9,7 @@ templateThemeMode.innerHTML = `
     border: 1px dashed var(--form-accent-color);
     position: absolute;
     bottom: 1rem;
-    right: 1rem;
+    left: 1rem;
     font-family: var(--body-font);
     font-size: .8rem;
     padding: 0 1rem;
@@ -148,15 +148,11 @@ select option {
         <option value="custom">Custom</option>         
     </select>
     
-    <div id="switch-con">
-    <label class="switch" id="toggle">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
-
-    <div class="moon-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"><rect fill="none" height="24" width="24"/><path d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg>
-    </div>
+    <button>
+        <div class="moon-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"><rect fill="none" height="24" width="24"/><path d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg>
+        </div>
+    </button>
 
     </div>
 </fieldset>
@@ -269,62 +265,3 @@ class ThemeMode extends HTMLElement {
 
 }
 window.customElements.define('theme-mode', ThemeMode);
-
-
-/*Går in på sidan. Kolla om där existerar ett sparat tema sedan tidigare? Om ja, då ska "custom" vara aktiverat
-om nej, då ska "auto" vara aktiverat. Om auto är aktiverat då ska vi titta på systemets tema istället.*/
-
-/*
-
-
-        const themeMode = localStorage.getItem('themeMode');
-        const themeStyle = localStorage.getItem('themeStyle');
-        let selectList = this.shadowRoot.querySelector('select');
-
-        if(themeMode != null){
-
-            // Check what mode
-            if(themeMode == 'auto'){
-
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    // dark mode
-                    document.body.setAttribute('theme', 'dark');
-                    setThemeStyle('dark');
-                } else {
-                    document.body.setAttribute('theme', '');
-                    setThemeStyle('');
-                }
-
-            } else if (themeMode == 'custom'){
-                console.log('Custom: ' + localStorage.getItem('themeMode'));
-                selectList.value = 'custom';
-            }
-
-        } else {
-            setThemeMode(selectList.value);
-        }
-
-        // Select menu
-        this.shadowRoot.querySelector('select').addEventListener('change', function(event){
-            setThemeMode(this.value);
-        })
-
-        // Set theme mode
-        function setThemeMode(mode){
-            console.log('Updated Storage with the value: ' + mode);
-            localStorage.setItem('themeMode', mode);
-        }
-
-        // Set the theme
-        function setThemeStyle(theme){
-            console.log('Updated Storage with the value: ' + theme);
-            localStorage.setItem('themeStyle', theme);
-        }
-
-        function getThemeStyle(){
-            console.log('Getting theme');
-            return localStorage.getItem('themeStyle');
-        }
-
-
- */
