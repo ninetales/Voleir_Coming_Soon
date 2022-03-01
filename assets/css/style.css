@@ -102,7 +102,7 @@ p {
 .info-text,
 .instagram-text {
     text-align: center;
-    border: .1rem solid var(--info-box-color);
+    border: 1px solid var(--info-box-color);
     /* box-shadow: rgba(45, 41, 38, 0.1) 0px 1px 4px; */
     padding: .5rem 1rem;
     border-radius: .3rem;
