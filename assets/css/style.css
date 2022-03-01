@@ -280,3 +280,12 @@ form button:hover {
     font-size: 13px;
     /* padding: 0.5rem; */
 }
+
+.sib-form #success-message {
+    font-size: .8rem;
+    font-family: "Helvetica", sans-serif;
+    color: #085229;
+    background-color: #e7faf0;
+    border-color: #13ce66;
+    margin: 0;
+}
