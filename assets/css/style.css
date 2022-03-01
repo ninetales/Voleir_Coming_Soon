@@ -73,7 +73,6 @@ p {
 .scroll-container {
     margin: auto;
     max-height: 100%;
-    overflow: auto;
 }
   
 
