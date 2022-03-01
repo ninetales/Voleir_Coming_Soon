@@ -54,8 +54,14 @@ p {
     height: 100vh;
     position: relative;
 
+    /* display: flex;
+    justify-content: center; */
+
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
 }
 
 /* @media only screen and (min-width: 800px) {
@@ -80,10 +86,6 @@ p {
     max-width: 400px;
     display: grid;
     grid-gap: 1rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .brand-container {
