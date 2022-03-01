@@ -58,11 +58,18 @@ p {
     justify-content: center;
 }
 
-@media only screen and (min-width: 800px) {
+/* @media only screen and (min-width: 800px) {
     .page-window-bg {
         align-items: center;
     }
+} */
+
+.scroll-container {
+    margin: auto;
+    max-height: 100%;
+    overflow: auto;
 }
+  
 
 .container {
     display: block;
