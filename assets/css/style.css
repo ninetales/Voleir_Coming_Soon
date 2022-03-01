@@ -311,3 +311,21 @@ form button:hover {
 .sib-form .clickable__icon {
     vertical-align: middle;
 }
+
+/**
+    Grecaptcha
+*/
+.reCAPTCHA-container {
+    margin: 0 16px;
+    /* padding: 1rem;
+    border: 1px solid #eee; */
+    text-align: center;
+}
+
+.reCAPTCHA-container p,
+.reCAPTCHA-container a {
+    font-size: .5rem;
+    color: #687484;
+}
+
+.grecaptcha-badge { visibility: hidden; }
