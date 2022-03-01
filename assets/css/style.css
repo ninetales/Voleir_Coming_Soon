@@ -54,17 +54,15 @@ p {
     height: 100vh;
     position: relative;
 
-    margin: auto;
-    width: 50%;
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
 }
 
-/* @media only screen and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
     .page-window-bg {
         align-items: center;
     }
-} */
+}
 
 .container {
     display: block;
